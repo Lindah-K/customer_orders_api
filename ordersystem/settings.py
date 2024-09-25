@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'orders',
     'oauth2_provider',
     'mozilla_django_oidc',
-
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -63,6 +63,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'oauth2_provider.middleware.OAuth2TokenMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware', 
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 
@@ -129,9 +130,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static',  ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
 
-STATIC_ROOT = BASE_DIR / 'staticfiles' 
 # Whitenoise configuration
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 

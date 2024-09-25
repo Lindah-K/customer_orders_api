@@ -29,7 +29,7 @@ This project implements a simple Python service with Django, allowing users to m
 ### 1. Clone the repository
 ```bash
 git clone https://github.com/Lindah-K/customer_orders_api.git
-cd your-repository
+cd customer_orders_api
 ```
 
 ### 2. Set up a virtual environment
@@ -49,8 +49,8 @@ Create a `.env` file in the project root and add the following environment varia
 ```
 SECRET_KEY=your_django_secret_key
 SMS_API_KEY=your_africas_talking_api_key
-OPENID_CLIENT_ID=your_openid_client_id
-OPENID_CLIENT_SECRET=your_openid_client_secret
+OIDC_RP_CLIENT_ID=your_openid_client_id
+OIDC_RP_CLIENT_SECRET=your_openid_client_secret
 ```
 
 ### 5. Run migrations

@@ -2,12 +2,20 @@ from django.test import TestCase
 from django.urls import reverse
 from rest_framework import status
 from orders.models import Customer, Order
+from django.contrib.auth import get_user_model
 
 class CustomerOrderAcceptanceTest(TestCase):
     def setUp(self):
-        # URL names that you will use in your project
-        self.create_customer_url = reverse('customer-list')  # Assuming your CustomerViewSet uses 'customer-list' name
-        self.create_order_url = reverse('order-list')  # Assuming your OrderViewSet uses 'order-list' name
+        # Create a superuser
+        self.user = get_user_model().objects.create_superuser(
+            username='testuser', 
+            password='testpassword'
+        )
+        self.client.login(username='testuser', password='testpassword')
+
+        # URL names
+        self.create_customer_url = reverse('customer-list')  # For listing customers
+        self.create_order_url = reverse('order-list')        # For listing orders
 
         # Create a sample customer
         self.customer_data = {
@@ -16,6 +24,7 @@ class CustomerOrderAcceptanceTest(TestCase):
             "phone_number":"+2547402229525"
         }
         self.customer = Customer.objects.create(**self.customer_data)
+
     
     def test_create_customer(self):
         """
@@ -107,9 +116,9 @@ class CustomerOrderAcceptanceTest(TestCase):
         self.assertEqual(response.data[0]['customer'], self.customer.id)
     
     def test_order_creation_without_customer(self):
-        response = self.client.post('/api/orders/', {
+        response = self.client.post(self.create_order_url, {
             'item': 'Tablet',
             'amount': 300,
             # No customer provided
-        })
+        }, content_type='application/json') 
         self.assertEqual(response.status_code, 400)

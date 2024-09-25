@@ -29,6 +29,8 @@ SECRET_KEY = config('SECRET_KEY', default='your-default-secret-key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+SECURE_SSL_REDIRECT = False  
+
 ALLOWED_HOSTS = [
     'customer-orders-api-9gj0.onrender.com',
     'localhost',  # for local development
@@ -149,7 +151,16 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+    ),
+    # Add this setting to disable trailing slash requirement
+    'DEFAULT_ROUTER_TRAILING_SLASH': False,
 }
+
 
 # OAuth2 provider settings
 OAUTH2_PROVIDER = {
@@ -185,4 +196,5 @@ SMS_API_KEY = config('SMS_API_KEY')
 # Configure the port
 PORT = os.environ.get('PORT', '8000')
 
-SECURE_SSL_REDIRECT = True
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

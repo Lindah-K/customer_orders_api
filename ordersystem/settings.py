@@ -29,7 +29,11 @@ SECRET_KEY = config('SECRET_KEY', default='your-default-secret-key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'customer-orders-api-9gj0.onrender.com',
+    'localhost',  # for local development
+    '127.0.0.1',  # for local development
+]
 
 
 # Application definition

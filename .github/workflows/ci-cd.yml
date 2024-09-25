@@ -27,17 +27,12 @@ jobs:
       - name: Debug Environment Variables
         env:
           CLIENT_ID: ${{ secrets.CLIENT_ID }}  
-          SECRET_KEY: ${{ secrets.SECRET_KEY }}  
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}  
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}  
+          SMS_API_KEY: ${{ secrets.SMS_API_KEY }}  
           DEBUG: ${{ secrets.DEBUG }}  
         run: |
-          echo "CLIENT_ID is set: $CLIENT_ID"
-          echo "SECRET_KEY is set: $SECRET_KEY"
-          if [ -z "$CLIENT_SECRET" ]; then
-            echo "CLIENT_SECRET is NOT set"
-          else
-            echo "CLIENT_SECRET is set"
-          fi
+          echo "Environment variables loaded."  # General confirmation
 
       - name: Run Unit Tests with Coverage
         env:
@@ -64,6 +59,7 @@ jobs:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}  
           CLIENT_ID: ${{ secrets.CLIENT_ID }}  
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}  
+          SMS_API_KEY: ${{ secrets.SMS_API_KEY }}  
           DEBUG: ${{ secrets.DEBUG }}  
         run: |
           python manage.py collectstatic --noinput

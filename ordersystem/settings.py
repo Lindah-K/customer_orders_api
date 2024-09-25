@@ -186,9 +186,8 @@ OIDC_RP_SCOPES = 'openid email profile'
 # LOGIN_URL = 'login'
 # LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/oidc/callback/'
 
-# LOGIN_REDIRECT_URL = 'https://customer-orders-api-9gj0.onrender.com/oidc/callback/'
+LOGIN_REDIRECT_URL = 'https://customer-orders-api-9gj0.onrender.com/oidc/callback/'
 
-LOGIN_REDIRECT_URL = '/ '
 
 # LOGOUT_REDIRECT_URL = 'login'
 

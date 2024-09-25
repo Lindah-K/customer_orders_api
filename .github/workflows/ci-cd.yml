@@ -24,6 +24,15 @@ jobs:
         pip install -r requirements.txt
         pip install coverage  # Install coverage for code coverage
 
+    - name: Debug Environment Variables
+      env:
+        CLIENT_ID: ${{ secrets.CLIENT_ID }}  
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}  
+        DEBUG: ${{ secrets.DEBUG }}  
+      run: |
+        echo "CLIENT_ID is set: $CLIENT_ID"
+        echo "SECRET_KEY is set: $SECRET_KEY"
+
     - name: Run Unit Tests with Coverage
       env:
         DATABASE_URL: ${{ secrets.DATABASE_URL }}  

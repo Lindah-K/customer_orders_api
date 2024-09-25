@@ -22,10 +22,13 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+        pip install coverage  # Install coverage for code coverage
 
-    - name: Run Tests
+    - name: Run Unit Tests with Coverage
       run: |
-        python manage.py test
+        coverage run --source='.' manage.py test  # Run tests with coverage
+        coverage report  # Display coverage report
+        # coverage html  # Generate HTML report for coverage (optional)
 
     - name: Collect Static Files
       run: |

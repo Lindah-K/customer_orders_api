@@ -33,5 +33,5 @@ jobs:
       run: |
         curl -X POST https://api.render.com/deploy \
         -H "Authorization: Bearer $RENDER_API_KEY" \
-        -d '{"serviceId":2gja.onrender.com}'
+        -d '{"serviceId":"srv-crpr70t6l47c73ao44r0"}'
 

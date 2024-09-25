@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'orders',
     'oauth2_provider',
     'mozilla_django_oidc',
-    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -63,7 +62,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'oauth2_provider.middleware.OAuth2TokenMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware', 
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 

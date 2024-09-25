@@ -44,7 +44,7 @@ jobs:
         run: |
           coverage run --source='.' manage.py test  # Run tests with coverage
           coverage report  # Display coverage report
-          coverage html  # Generate HTML report for coverage
+          #coverage html  # Generate HTML report for coverage
 
       - name: Upload Coverage Report
         uses: actions/upload-artifact@v3

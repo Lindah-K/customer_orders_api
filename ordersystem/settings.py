@@ -182,6 +182,7 @@ OIDC_OP_USER_ENDPOINT = 'https://openidconnect.googleapis.com/v1/userinfo'
 OIDC_OP_JWKS_ENDPOINT = 'https://www.googleapis.com/oauth2/v3/certs'
 OIDC_OP_DISCOVERY_ENDPOINT = 'https://accounts.google.com/.well-known/openid-configuration'
 OIDC_RP_SCOPES = 'openid email profile'
+OIDC_RP_SIGN_ALGO = 'RS256'
 
 # LOGIN_URL = 'login'
 # LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/oidc/callback/'

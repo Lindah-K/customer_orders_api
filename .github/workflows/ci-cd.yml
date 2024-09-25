@@ -3,7 +3,7 @@ name: CI/CD for customer_order_services django api
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   test-and-deploy:

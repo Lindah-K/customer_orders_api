@@ -25,10 +25,12 @@ jobs:
         pip install coverage  # Install coverage for code coverage
 
     - name: Run Unit Tests with Coverage
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}  
       run: |
         coverage run --source='.' manage.py test  # Run tests with coverage
         coverage report  # Display coverage report
-        # coverage html  # Generate HTML report for coverage (optional)
+        coverage html  # Generate HTML report for coverage
 
     - name: Collect Static Files
       run: |
@@ -37,6 +39,7 @@ jobs:
     - name: Deploy to Render
       env:
         RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}  
       run: |
         curl -X POST https://api.render.com/deploy \
         -H "Authorization: Bearer $RENDER_API_KEY" \

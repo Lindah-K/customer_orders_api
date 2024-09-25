@@ -28,10 +28,16 @@ jobs:
         env:
           CLIENT_ID: ${{ secrets.CLIENT_ID }}  
           SECRET_KEY: ${{ secrets.SECRET_KEY }}  
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}  
           DEBUG: ${{ secrets.DEBUG }}  
         run: |
           echo "CLIENT_ID is set: $CLIENT_ID"
           echo "SECRET_KEY is set: $SECRET_KEY"
+          if [ -z "$CLIENT_SECRET" ]; then
+            echo "CLIENT_SECRET is NOT set"
+          else
+            echo "CLIENT_SECRET is set"
+          fi
 
       - name: Run Unit Tests with Coverage
         env:
@@ -44,7 +50,7 @@ jobs:
         run: |
           coverage run --source='.' manage.py test  # Run tests with coverage
           coverage report  # Display coverage report
-          # coverage html  # Generate HTML report for coverage
+          #coverage html  # Generate HTML report for coverage
 
       - name: Upload Coverage Report
         uses: actions/upload-artifact@v3
@@ -56,9 +62,10 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}  
           SECRET_KEY: ${{ secrets.SECRET_KEY }}  
-          CLIENT_ID: ${{ secrets.CLIENT_ID }}  # Ensure CLIENT_ID is set here
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}  
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}  
+          DEBUG: ${{ secrets.DEBUG }}  
         run: |
-          echo "CLIENT_ID is set during collectstatic: $CLIENT_ID"  # Debugging line
           python manage.py collectstatic --noinput
 
       - name: Deploy to Render

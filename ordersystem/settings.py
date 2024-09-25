@@ -170,7 +170,9 @@ OIDC_OP_DISCOVERY_ENDPOINT = 'https://accounts.google.com/.well-known/openid-con
 OIDC_RP_SCOPES = 'openid email profile'
 
 # LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/oidc/callback/'
+# LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/oidc/callback/'
+
+LOGIN_REDIRECT_URL = 'https://customer-orders-api-9gj0.onrender.com/oidc/callback/'
 
 # LOGOUT_REDIRECT_URL = 'login'
 

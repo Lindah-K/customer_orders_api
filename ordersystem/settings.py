@@ -183,3 +183,5 @@ SMS_API_KEY = config('SMS_API_KEY')
 
 # Configure the port
 PORT = os.environ.get('PORT', '8000')
+
+SECURE_SSL_REDIRECT = True

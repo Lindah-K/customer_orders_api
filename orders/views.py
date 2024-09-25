@@ -49,7 +49,7 @@ class CustomerViewSet(viewsets.ModelViewSet):
 
 
 def login(request):
-    return redirect('/oidc/authenticate/')
+    return redirect('/home/')
 
 @login_required
 def home(request):

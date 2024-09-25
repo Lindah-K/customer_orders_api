@@ -27,12 +27,26 @@ jobs:
     - name: Run Unit Tests with Coverage
       env:
         DATABASE_URL: ${{ secrets.DATABASE_URL }}  
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}  
+        DEBUG: ${{ secrets.DEBUG }}  
+        CLIENT_ID: ${{ secrets.CLIENT_ID }}  
+        CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}  
+        SMS_API_KEY: ${{ secrets.SMS_API_KEY }}  
       run: |
         coverage run --source='.' manage.py test  # Run tests with coverage
         coverage report  # Display coverage report
         coverage html  # Generate HTML report for coverage
 
+    - name: Upload Coverage Report
+      uses: actions/upload-artifact@v3
+      with:
+        name: coverage-report
+        path: htmlcov/*
+
     - name: Collect Static Files
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}  
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}  
       run: |
         python manage.py collectstatic --noinput
 
@@ -40,6 +54,9 @@ jobs:
       env:
         RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
         DATABASE_URL: ${{ secrets.DATABASE_URL }}  
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}  
+        CLIENT_ID: ${{ secrets.CLIENT_ID }}  
+        CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}  
       run: |
         curl -X POST https://api.render.com/deploy \
         -H "Authorization: Bearer $RENDER_API_KEY" \

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%load static%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/styles.css'%}">
+    <title>Customer Orders System</title>
+</head>
+<body>
+    <h1>Welcome to QuickCart</h1>
+    <h4><i>Secure, Fast & Friendly</i></h4>
+    <a href="{% url 'login' %}" id="loginLink"> Login with Google</a>
+    <div class="footer">secure, fast & friendly!</div>
+
+    <script>
+        // Simple JavaScript to add an alert on link click (for demo purposes)
+        document.getElementById('loginLink').addEventListener('click', function() {
+            alert('Redirecting to Google login...');
+        });
+    </script>
+</body>
+</html>

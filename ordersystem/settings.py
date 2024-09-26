@@ -162,12 +162,6 @@ REST_FRAMEWORK = {
 }
 
 
-# OAuth2 provider settings
-OAUTH2_PROVIDER = {
-    'ACCESS_TOKEN_EXPIRE_SECONDS': 36000,  # Token expiry time (in seconds)
-    'AUTHORIZATION_CODE_EXPIRE_SECONDS': 600,  # Auth code expiry time
-}
-
 AUTHENTICATION_BACKENDS = (
     'mozilla_django_oidc.auth.OIDCAuthenticationBackend',
     'django.contrib.auth.backends.ModelBackend',
@@ -185,14 +179,13 @@ OIDC_RP_SCOPES = 'openid email profile'
 OIDC_RP_SIGN_ALGO = 'RS256'
 
 # LOGIN_URL = 'login'
-# LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/oidc/callback/'
+# LOGIN_REDIRECT_URL = 'REDIRECT_URI'
 
-LOGIN_REDIRECT_URL = 'https://customer-orders-api-9gj0.onrender.com/oidc/callback/'
-
+LOGIN_REDIRECT_URL = config('REDIRECT_URI')
 
 # LOGOUT_REDIRECT_URL = 'login'
 
-# Other settings
+# SMS settings
 SMS_API_KEY = config('SMS_API_KEY')
 
 # Configure the port

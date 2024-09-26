@@ -27,9 +27,11 @@ SECRET_KEY = config('SECRET_KEY', default='your-default-secret-key')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-DEBUG = True
+# DEBUG = True
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
 
 ALLOWED_HOSTS = [
     'customer-orders-api-9gj0.onrender.com',

@@ -18,14 +18,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
-from mozilla_django_oidc.views import OIDCAuthenticationRequestView, OIDCAuthenticationCallbackView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('orders.urls')),
     path('oidc/', include('mozilla_django_oidc.urls')),
     path('', TemplateView.as_view(template_name='index.html'), name='home'),
-    path('oidc/login/', OIDCAuthenticationRequestView.as_view(), name='oidc_authentication_init'),
-    path('oidc/callback/', OIDCAuthenticationCallbackView.as_view(), name='oidc_authentication_callback'),
 ]
 

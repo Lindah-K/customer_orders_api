@@ -53,5 +53,4 @@ def login(request):
 
 @login_required
 def home(request):
-    return redirect('/api/')
-
+    return redirect('/api/') if request.user.is_authenticated else redirect('/login/')

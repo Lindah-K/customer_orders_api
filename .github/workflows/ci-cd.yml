@@ -77,7 +77,8 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}  
           SECRET_KEY: ${{ secrets.SECRET_KEY }}  
           CLIENT_ID: ${{ secrets.CLIENT_ID }}  
-          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}  
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }} 
+          REDIRECT_URI: https://customer-orders-api-9gj0.onrender.com/oidc/callback/ 
         run: |
           response=$(curl -X POST https://api.render.com/v1/deploy \
             -H "Authorization: Bearer $RENDER_API_KEY" \

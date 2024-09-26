@@ -45,7 +45,6 @@ jobs:
         run: |
           coverage run --source='.' manage.py test  # Run tests with coverage
           coverage report  # Display coverage report
-          #coverage html  # Generate HTML report for coverage
 
       - name: Upload Coverage Report
         uses: actions/upload-artifact@v3
@@ -74,5 +73,5 @@ jobs:
         run: |
           response=$(curl -X POST https://api.render.com/deploy \
           -H "Authorization: Bearer $RENDER_API_KEY" \
-          -d '{"serviceId":"srv-crpr70t6l47c73ao44r0"}'
-          echo $response
+          -d '{"serviceId":"srv-crpr70t6l47c73ao44r0"}')
+          echo "Response from Render: $response"  # Print response for debugging

@@ -73,6 +73,7 @@ jobs:
         run: |
           response=$(curl -X POST https://api.render.com/v1/deploy \
             -H "Authorization: Bearer $RENDER_API_KEY" \
+            -H "Content-Type: application/json" \
             -d '{"serviceId":"srv-crpr70t6l47c73ao44r0"}' -v)
 
           echo "Response from Render: $response"  # Output the response

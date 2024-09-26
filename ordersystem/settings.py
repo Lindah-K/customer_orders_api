@@ -181,7 +181,7 @@ OIDC_RP_SIGN_ALGO = 'RS256'
 # LOGIN_URL = 'login'
 # LOGIN_REDIRECT_URL = 'REDIRECT_URI'
 
-LOGIN_REDIRECT_URL = 'https://customer-orders-api-9gj0.onrender.com/oidc/callback/''
+LOGIN_REDIRECT_URL = 'https://customer-orders-api-9gj0.onrender.com/oidc/callback/'
 
 # LOGOUT_REDIRECT_URL = 'login'
 

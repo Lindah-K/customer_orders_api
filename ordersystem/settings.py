@@ -170,7 +170,6 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 OIDC_RP_CLIENT_ID = config('CLIENT_ID')
 OIDC_RP_CLIENT_SECRET = config('CLIENT_SECRET')
@@ -200,17 +199,5 @@ PORT = os.environ.get('PORT', '8000')
 USE_X_FORWARDED_HOST = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-
-if not DEBUG:
-    SECURE_SSL_REDIRECT = True  
-    SESSION_COOKIE_SECURE = True  
-    CSRF_COOKIE_SECURE = True  
-    X_FRAME_OPTIONS = 'DENY' 
-
-# settings.py
-# Session-related settings
-SESSION_COOKIE_NAME = 'sessionid'  # Name of the session cookie
-SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # Expire the session when the browser is closed
-SESSION_COOKIE_AGE = 1209600  # Duration (in seconds) for which the session will be valid (default: 2 weeks)
-SESSION_COOKIE_SECURE = True  # Use secure cookies if you're on HTTPS
-SESSION_COOKIE_HTTPONLY = True  # Prevent JavaScript from accessing the cookie
+SECURE_SSL_REDIRECT = False
+   

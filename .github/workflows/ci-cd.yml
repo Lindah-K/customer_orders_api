@@ -32,7 +32,7 @@ jobs:
           SMS_API_KEY: ${{ secrets.SMS_API_KEY }}  
           DEBUG: ${{ secrets.DEBUG }}  
         run: |
-          echo "Environment variables loaded."  # General confirmation
+          echo "Environment variables loaded."  # Confirmation of loaded variables
 
       - name: Run Unit Tests with Coverage
         env:
@@ -50,7 +50,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: coverage-report
-          path: htmlcov/*
+          path: htmlcov/*  # Path to coverage report
 
       - name: Collect Static Files
         env:
@@ -61,7 +61,7 @@ jobs:
           SMS_API_KEY: ${{ secrets.SMS_API_KEY }}  
           DEBUG: ${{ secrets.DEBUG }}  
         run: |
-          python manage.py collectstatic --noinput
+          python manage.py collectstatic --noinput  # Collect static files
 
       - name: Deploy to Render
         env:
@@ -71,7 +71,8 @@ jobs:
           CLIENT_ID: ${{ secrets.CLIENT_ID }}  
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}  
         run: |
-          response=$(curl -X POST https://api.render.com/deploy \
-          -H "Authorization: Bearer $RENDER_API_KEY" \
-          -d '{"serviceId":"srv-crpr70t6l47c73ao44r0"}')
-          echo "Response from Render: $response"  # Print response for debugging
+          response=$(curl -X POST https://api.render.com/v1/deploy \
+            -H "Authorization: Bearer $RENDER_API_KEY" \
+            -d '{"serviceId":"srv-crpr70t6l47c73ao44r0"}' -v)
+
+          echo "Response from Render: $response"  # Output the response

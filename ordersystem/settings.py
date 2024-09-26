@@ -157,7 +157,6 @@ REST_FRAMEWORK = {
     'DEFAULT_PARSER_CLASSES': (
         'rest_framework.parsers.JSONParser',
     ),
-    # Add this setting to disable trailing slash requirement
     'DEFAULT_ROUTER_TRAILING_SLASH': False,
 }
 
@@ -180,7 +179,7 @@ OIDC_OP_AUTHORIZATION_ENDPOINT = 'https://accounts.google.com/o/oauth2/v2/auth'
 OIDC_OP_TOKEN_ENDPOINT = 'https://oauth2.googleapis.com/token'
 OIDC_OP_USER_ENDPOINT = 'https://openidconnect.googleapis.com/v1/userinfo'
 OIDC_OP_JWKS_ENDPOINT = 'https://www.googleapis.com/oauth2/v3/certs'
-# OIDC_OP_DISCOVERY_ENDPOINT = 'https://accounts.google.com/.well-known/openid-configuration'
+OIDC_OP_DISCOVERY_ENDPOINT = 'https://accounts.google.com/.well-known/openid-configuration'
 OIDC_RP_SCOPES = 'openid email profile'
 OIDC_RP_SIGN_ALGO = 'RS256'
 
@@ -198,7 +197,7 @@ SMS_API_KEY = config('SMS_API_KEY')
 # Configure the port
 PORT = os.environ.get('PORT', '8000')
 
-# Ensure these settings are configured for production
+# for production
 USE_X_FORWARDED_HOST = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 

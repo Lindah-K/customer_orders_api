@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'mozilla_django_oidc',
 ]
 
+# Middleware configuration
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware', 
@@ -197,11 +198,13 @@ SMS_API_KEY = config('SMS_API_KEY')
 # Configure the port
 PORT = os.environ.get('PORT', '8000')
 
+# Ensure these settings are configured for production
 USE_X_FORWARDED_HOST = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 
 if not DEBUG:
     SECURE_SSL_REDIRECT = True  
     SESSION_COOKIE_SECURE = True  
     CSRF_COOKIE_SECURE = True  
-    X_FRAME_OPTIONS = 'DENY'  
+    X_FRAME_OPTIONS = 'DENY' 

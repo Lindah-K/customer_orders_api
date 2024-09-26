@@ -177,6 +177,7 @@ OIDC_OP_JWKS_ENDPOINT = 'https://www.googleapis.com/oauth2/v3/certs'
 OIDC_OP_DISCOVERY_ENDPOINT = 'https://accounts.google.com/.well-known/openid-configuration'
 OIDC_RP_SCOPES = 'openid email profile'
 OIDC_RP_SIGN_ALGO = 'RS256'
+OIDC_REDIRECT_URI = 'https://customer-orders-api-9gj0.onrender.com/oidc/callback/'
 
 # LOGIN_URL = 'login'
 # LOGIN_REDIRECT_URL = 'REDIRECT_URI'
@@ -196,4 +197,6 @@ USE_X_FORWARDED_HOST = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 SECURE_SSL_REDIRECT = False
-   
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'  
+SESSION_COOKIE_SECURE = True 
